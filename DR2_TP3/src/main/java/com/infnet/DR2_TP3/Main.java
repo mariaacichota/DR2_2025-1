@@ -22,11 +22,17 @@ public class Main {
 		List<Item> itens = Arrays.asList(item1, item2);
 		PedidoController pedidoController = new PedidoController();
 
-		Pedido pedido = pedidoController.criarPedido("PED000001", itens, 10, 5, Pedido.StatusPedido.CONCLUIDO); // Desconto de 10%, Frete de 5
+		Pedido pedido = pedidoController.criarPedido("PED000001", itens, 10, 5, Pedido.StatusPedido.CONCLUIDO);
 		System.out.println("Pedido Criado:");
 		pedidoController.exibirInformacoesPedido(pedido);
 
 		Item item3 = new Item("SKU789", 3, 20.0);
+
+		Item itemComQuantidadeAlterada = item2.atualizarQuantidade(10);
+		System.out.println("Item Original: Quantidade = " + item2.getQuantidade() + ", Valor Total = " + item2.calcularTotal());
+		System.out.println("Item Novo: Quantidade = " + itemComQuantidadeAlterada.getQuantidade()
+							+ ", Valor Total = " + itemComQuantidadeAlterada.calcularTotal());
+
 		Pedido pedidoComItemAdicionado = pedidoController.adicionarItem(pedido, item3);
 		System.out.println("\nPedido Após Adicionar Item:");
 		pedidoController.exibirInformacoesPedido(pedidoComItemAdicionado);
@@ -35,16 +41,15 @@ public class Main {
 		System.out.println("\nPedido Após Remover Item:");
 		pedidoController.exibirInformacoesPedido(pedidoComItemRemovido);
 
-
-		Pedido pedidoComDescontoAlterado = pedidoController.aplicarDesconto(pedidoComItemRemovido, 15); // Novo desconto de 15%
+		Pedido pedidoComDescontoAlterado = pedidoController.aplicarDesconto(pedidoComItemRemovido, 15);
 		System.out.println("\nNovo Pedido com Desconto Alterado:");
 		pedidoController.exibirInformacoesPedido(pedidoComDescontoAlterado);
 
-		Pedido pedidoComFreteAlterado = pedidoController.alterarFrete(pedidoComDescontoAlterado, 10); // Novo frete de 10
+		Pedido pedidoComFreteAlterado = pedidoController.alterarFrete(pedidoComDescontoAlterado, 10);
 		System.out.println("\nNovo Pedido com Frete Alterado:");
 		pedidoController.exibirInformacoesPedido(pedidoComFreteAlterado);
 
-		Pedido pedidoConcluido = pedidoController.atualizarStatusPedido(pedidoComFreteAlterado, Pedido.StatusPedido.CONCLUIDO); // Novo frete de 10
+		Pedido pedidoConcluido = pedidoController.atualizarStatusPedido(pedidoComFreteAlterado, Pedido.StatusPedido.CONCLUIDO);
 		System.out.println("\nNovo Pedido com Status Alterado:");
 		pedidoController.exibirInformacoesPedido(pedidoConcluido);
 
