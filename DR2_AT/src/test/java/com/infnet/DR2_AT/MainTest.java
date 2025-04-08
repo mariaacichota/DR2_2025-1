@@ -10,4 +10,7 @@ class MainTest {
 	void contextLoads() {
 	}
 
+	@Test
+	void main() {
+	}
 }

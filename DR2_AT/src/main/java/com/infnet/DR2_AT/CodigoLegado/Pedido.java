@@ -19,11 +19,13 @@ public class Pedido {
     }
 
     public String gerarEtiqueta() {
-        return "Destinatário: " + destinatario + "\nEndereço: " + endereco + "\nValor do Frete: R$" + calcularFrete();
+        return "Destinatário: " + destinatario + "\nEndereço: " + endereco
+                + "\nValor do Frete: R$" + calcularFrete();
     }
 
     public String gerarResumoPedido() {
-        return "Pedido para " + destinatario + " com frete tipo " + tipoFrete + " no valor de R$" + calcularFrete();
+        return "Pedido para " + destinatario + " com frete tipo " + tipoFrete
+                + " no valor de R$" + calcularFrete();
     }
 
     public void aplicarFretePromocional() {
